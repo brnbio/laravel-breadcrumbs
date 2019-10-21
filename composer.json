@@ -1,5 +1,5 @@
 {
-    "name": "brnbio/laravel-breacdcrumbs",
+    "name": "brnbio/laravel-breadcrumbs",
     "description": "Breadcrumb helper for laravel framework",
     "type": "library",
     "license": "MIT",
