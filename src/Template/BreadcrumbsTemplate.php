@@ -27,11 +27,8 @@ class BreadcrumbsTemplate
     public function render(array $items = []): HtmlString
     {
         foreach ($items as &$item) {
-            $item = str_replace(
-                ['{url}', '{name}'],
-                [$item['url'], $item['name']],
-                $this->getBreadcrumbItemTemplate()
-            );
+            $template = $item['url'] ? $this->getBreadcrumbItemTemplate() : $this->getBreadcrumbActiveItemTemplate();
+            $item = $this->replacePlaceholders($item, $template);
         }
         $breadcrumbs = str_replace('{items}', implode('', $items), $this->getBreadcrumbsTemplate());
 
@@ -52,5 +49,27 @@ class BreadcrumbsTemplate
     protected function getBreadcrumbItemTemplate(): string
     {
         return '<a href="{url}">{name}</a>';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBreadcrumbActiveItemTemplate(): string
+    {
+        return '<span class="active">{name}</span>';
+    }
+
+    /**
+     * @param array $item
+     * @param string $content
+     * @return string
+     */
+    private function replacePlaceholders(array $item, string $content): string
+    {
+        foreach ($item as $key => $value) {
+            $content = str_replace('{' . $key . '}', $value, $content);
+        }
+
+        return $content;
     }
 }

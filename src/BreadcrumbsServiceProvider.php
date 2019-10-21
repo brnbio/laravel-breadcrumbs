@@ -1,7 +1,7 @@
 <?php
 
 /**
- * NumberServiceProvider.php
+ * BreadcrumbsServiceProvider.php
  *
  * @copyright   Copyright (c) brnbio (http://brnb.io)
  * @author      Frank Heider <heider@brnb.io>
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class NumberServiceProvider
+ * Class BreadcrumbsServiceProvider
  * @package Brnbio\LaravelBreadcrumbs
  */
 class BreadcrumbsServiceProvider extends ServiceProvider
