@@ -48,16 +48,16 @@ class Breadcrumbs
 
     /**
      * @param string $name
-     * @param string $url
+     * @param string|null $url
      * @param array $options
      * @return $this
      */
-    public function add(string $name, string $url, array $options = []): self
+    public function add(string $name, string $url = null, array $options = []): self
     {
         $options = $this->getAddOptions($options);
         $item = [
             'name' => e($name),
-            'url' => url($url),
+            'url' => $url ? url($url) : null,
         ];
 
         if ($options['prepend']) {

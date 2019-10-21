@@ -33,4 +33,12 @@ class Bootstrap4 extends BreadcrumbsTemplate
     {
         return '<li class="breadcrumb-item"><a href="{url}">{name}</a></li>';
     }
+
+    /**
+     * @return string
+     */
+    protected function getBreadcrumbActiveItemTemplate(): string
+    {
+        return '<li class="breadcrumb-item active" aria-current="page">{name}</li>';
+    }
 }
