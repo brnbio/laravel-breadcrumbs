@@ -47,6 +47,14 @@ class Breadcrumbs
     }
 
     /**
+     * @return array
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
      * @param string $name
      * @param string|null $url
      * @param array $options
