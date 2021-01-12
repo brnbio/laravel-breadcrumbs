@@ -67,7 +67,9 @@ class BreadcrumbsTemplate
     private function replacePlaceholders(array $item, string $content): string
     {
         foreach ($item as $key => $value) {
-            $content = str_replace('{' . $key . '}', $value, $content);
+            if (is_string($value)) {
+                $content = str_replace('{' . $key . '}', $value, $content);
+            }
         }
 
         return $content;
