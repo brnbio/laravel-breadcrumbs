@@ -63,8 +63,12 @@ class Breadcrumbs
     public function add(string $name, string $url = null, array $options = []): self
     {
         $options = $this->getAddOptions($options);
+        if (!empty($options['escape'])) {
+            $name = e($name);
+        }
+
         $item = [
-            'name' => e($name),
+            'name' => $name,
             'url' => $url ? url($url) : null,
         ];
 
@@ -80,11 +84,12 @@ class Breadcrumbs
     /**
      * @param string $name
      * @param string $url
-     * @return $this
+     * @param array $attributes
+     * @return self
      */
-    public function prepend(string $name, string $url): self
+    public function prepend(string $name, string $url, array $attributes = []): self
     {
-        return $this->add($name, $url, [
+        return $this->add($name, $url, $attributes + [
             'prepend' => true,
         ]);
     }
@@ -131,6 +136,7 @@ class Breadcrumbs
     {
         return $options + [
             'prepend' => false,
+            'escape' => true,
         ];
     }
 }
