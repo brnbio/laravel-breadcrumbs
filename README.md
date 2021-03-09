@@ -9,26 +9,32 @@ There are 2 ways to add breadcrumbs: with the breadcrumb helper function or a bl
 ### helper function
 
 Add breadcrumbs
-```
-breadcrumbs()->add('Items', route('index'))
-breadcrumbs()->add('Item detail')
+```php
+breadcrumbs()->add('Items', route('index'));
+breadcrumbs()->add('Item detail');
 ```
 
 You can also prepend breadcrumbs for e.g. the home link in any layout
-```
-breadcrumbs()->prepend('Home', '/')
+```php
+breadcrumbs()->prepend('Home', '/');
+
+// with icon:
+// because breadcrumb text is always escaped
+// you have to add escape=false
+breadcrumbs()->prepend('<i class="fa fas-home" />', route('home'), ['escape' => false]);
+
 ```
 
 Render breadcrumbs
-```
-breadcrumbs()->render()
+```php
+breadcrumbs()->render();
 ```
 
 ### blade
 
 same examples in blade 
 
-```
+```php
 @breadcrumb('Home', '/')
 @breadcrumb('Items', route('index'))
 @breadcrumb('Item detail')
